@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Momen Manis</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background foto lebih terlihat */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url("poto bg.jfif") center/cover no-repeat;
+    filter: blur(4px) brightness(90%);
+    z-index: -2;
+}
+
+/* Overlay sangat tipis */
+body::after {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.03);
+    z-index: -1;
+}
+
+/* Container efek kaca */
+.container {
+    width: 900px;
+    padding: 40px;
+    position: relative;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    margin: 40px 0;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+/* Judul */
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 48px;
+    text-align: center;
+}
+
+.subtitle {
+    background: #a8c0c6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 15px;
+    display: inline-block;
+    margin: 10px auto 30px;
+}
+
+/* Polaroid */
+.polaroid {
+    background: white;
+    padding: 15px 15px 40px 15px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    position: relative;
+    margin: 20px;
+    transform: rotate(-2deg);
+    transition: 0.3s;
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.07);
+}
+
+.polaroid img {
+    width: 100%;
+    height: auto;
+}
+
+/* Selotip */
+.polaroid::before {
+    content: "";
+    width: 60px;
+    height: 20px;
+    background: rgba(255,255,200,0.7);
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+}
+
+/* Tanggal */
+.photo-date {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Grid */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.small {
+    width: 250px;
+}
+
+/* Footer */
+.footer-text {
+    margin-top: 40px;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-size: 28px;
+}
+
+.note {
+    text-align: right;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+/* Hati */
+.heart {
+    position: fixed;
+    top: -10px;
+    color: pink;
+    animation: fall 5s linear infinite;
+    font-size: 20px;
+    pointer-events: none;
+}
+
+/* Bunga */
+.flower {
+    position: fixed;
+    top: -10px;
+    animation: fall 7s linear infinite;
+    font-size: 22px;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    0% {transform: translateY(-10px);}
+    100% {transform: translateY(100vh);}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="title">Momen Manis</div>
+    <div style="text-align:center;">
+        <div class="subtitle">Bersama Kekasih ❤️</div>
+    </div>
+
+    <div class="polaroid" style="width:400px; margin:auto;">
+        <img src="poto 4.jfif">
+        <div class="photo-date">25.11.2025</div>
+    </div>
+
+    <div class="grid">
+
+        <div class="polaroid small">
+            <img src="poto 2.jfif">
+            <div class="photo-date">03.01.2026</div>
+        </div>
+
+        <div class="polaroid small">
+            <img src="poto 3.jfif">
+            <div class="photo-date">13.12.2025</div>
+        </div>
+
+        <div class="polaroid small">
+            <img src="poto 5.jfif">
+            <div class="photo-date">25.12.2025</div>
+        </div>
+
+        <div class="polaroid small">
+            <img src="poto 6.jfif">
+            <div class="photo-date">03.01.2026</div>
+        </div>
+
+        <div class="polaroid small">
+            <img src="poto 7.jfif">
+            <div class="photo-date">03.01.2026</div>
+        </div>
+
+    </div>
+
+    <div class="polaroid small" style="width:300px; margin:auto;">
+        <img src="poto 1.jfif">
+        <div class="photo-date">26.01.2026</div>
+    </div>
+
+    <div class="footer-text">Makasih yaa udah selalu ada buat aku..!</div>
+
+    <div class="note">
+        Selalu bersama dan luangkan waktu disaat banyak kesibukan okey.
+    </div>
+
+</div>
+
+<audio autoplay loop>
+    <source src="d9aef730e6a4.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// ❤️ Hati
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => { heart.remove(); }, 5000);
+}
+setInterval(createHeart, 600);
+
+// 🌸 Bunga
+function createFlower() {
+    const flower = document.createElement("div");
+    flower.classList.add("flower");
+    flower.innerHTML = "🌸";
+    flower.style.left = Math.random() * window.innerWidth + "px";
+    flower.style.animationDuration = (Math.random() * 5 + 3) + "s";
+    document.body.appendChild(flower);
+    setTimeout(() => { flower.remove(); }, 7000);
+}
+setInterval(createFlower, 900);
+</script>
+
+</body>
+</html>
