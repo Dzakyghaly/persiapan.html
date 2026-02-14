@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Momen Manis</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Background */
+      body::before {
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: url("poto bg.jfif") center/cover no-repeat;
+        filter: blur(4px) brightness(90%);
+        z-index: -2;
+      }
+
+      .container {
+        width: 900px;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(8px);
+        border-radius: 20px;
+        margin: 40px 0;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .title {
+        font-family: "Pacifico", cursive;
+        font-size: 48px;
+        text-align: center;
+      }
+
+      .subtitle {
+        background: #a8c0c6;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 15px;
+        display: inline-block;
+        margin: 10px auto 30px;
+      }
+
+      .polaroid {
+        background: white;
+        padding: 15px 15px 40px 15px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        position: relative;
+        margin: 20px;
+        transform: rotate(-2deg);
+        transition: 0.3s;
+      }
+
+      .polaroid:hover {
+        transform: rotate(0deg) scale(1.07);
+      }
+
+      .polaroid img {
+        width: 100%;
+      }
+
+      .photo-date {
+        position: absolute;
+        bottom: 8px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 500;
+        color: #555;
+      }
+
+      .grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .small {
+        width: 250px;
+      }
+
+      /* Overlay Musik */
+      #musicOverlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+      }
+
+      #playBtn {
+        padding: 20px 40px;
+        font-size: 22px;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        background: #ff6f91;
+        color: white;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      #playBtn:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Overlay -->
+    <div id="musicOverlay">
+      <button id="playBtn">🎵 Klik Untuk Memulai</button>
+    </div>
+
+    <div class="container">
+      <div class="title">Momen Manis</div>
+      <div style="text-align: center">
+        <div class="subtitle">Bersama Kekasih ❤️</div>
+      </div>
+
+      <!-- Contoh Foto -->
+      <div class="polaroid" style="width: 400px; margin: auto">
+        <img src="poto 4.jfif" />
+        <div class="photo-date">25.11.2025</div>
+      </div>
+    </div>
+
+    <!-- AUDIO -->
+    <audio id="bgMusic" preload="auto" loop>
+      <source src="./lagulagu.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script>
+      const music = document.getElementById("bgMusic");
+      const overlay = document.getElementById("musicOverlay");
+      const playBtn = document.getElementById("playBtn");
+
+      playBtn.addEventListener("click", function () {
+        music.muted = false;
+        music.volume = 1.0;
+
+        music
+          .play()
+          .then(() => {
+            overlay.style.display = "none";
+          })
+          .catch(() => {
+            alert("Jika musik belum berbunyi, klik sekali lagi ❤️");
+          });
+      });
+    </script>
+  </body>
+</html>
